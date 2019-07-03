@@ -1,0 +1,35 @@
+﻿@{ 
+    string url = Model;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <title>Image search</title>
+    <meta name="description" content="imsy.org contact page" />
+    <meta name="theme-color" content="blue">
+    <meta property="og:title" content="Contact us" />
+    <meta property="og:description" content="imsy.org contact page" />
+    @Html.Partial("../_Partial/GoogleStat.cshtml")
+</head>
+<body>
+    <div class="container gallery search-container">
+        <div class="left">
+            <a class="logo" href="../"><img alt="imsy.org" src="../images/logo.jpg"></a>
+            @Html.Partial("../_Partial/Search.cshtml", "")
+        </div>
+    </div>
+    <div class="container gallery menu-container">
+        <div class="left">
+            @Html.Partial("../_Partial/SearchMenu.cshtml")
+        </div>
+    </div>
+    <div class="container contact-container">
+        <div class="center">
+            <h1>imsy.org@outlook.com</h1>
+        </div>
+    </div>
+    <script src="/js/lib.js"></script>
+</body>
+</html>

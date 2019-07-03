@@ -1,0 +1,92 @@
+﻿@{
+    ImageGallery.Models.Gallery.ImageResponce imageResp = Model;
+    var image = imageResp.Image;
+    var downloadUrl="https://drive.google.com/uc?export=download&id=" +image.Id;
+    var viewUrl="https://drive.google.com/uc?export=view&id=" +image.Id;
+    var url="https://drive.google.com/thumbnail?id=" + image.Id + "&sz=w" + 1024;
+    var title = image.Title;
+    var size = $"{image.Width} \xD7 {image.Height}";
+    var description = string.Join(',', image.DescriptionCaptions);
+    var keywords = string.Join(',', image.Tags);
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-control" content="public">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="blue">
+    <meta name="title" content="@title">
+    <meta name="keywords" content="@keywords">
+    <meta name="description" content="@description">
+    <meta property="og:title" content="@title" />
+    <meta property="og:image" content="@url" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="@image.Width" />
+    <meta property="og:image:height" content="@image.Height" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137801953-1"></script>
+    @Html.Partial("../_Partial/GoogleStat.cshtml")
+</head>
+<body>
+    <div class="image logo-container">
+        <div class="center">
+            <a class="logo" href="../"><img alt="imsy.org" src="../images/logo.jpg"></a>
+        </div>
+    </div>
+    <div class="image download-container">
+        <div class="center">
+            <div class="button"> <a id="download" href="@downloadUrl" download>Download image!</a> </div>
+            <div class="button open"> <a id="open" href="@viewUrl" target="_blank">Open in full size!</a> </div>
+            <div class="button close"> <a id="close" onclick="window.close()">Close tab</a></div>
+        </div>
+    </div>
+
+    <div class=" image info-container">
+        <div class="center">
+            <div class="block block-imageSize"><label class="el">Original resolution: </label><span class="el" id="imageSize">@size</span></div>
+            <div class="block block-colors">
+                <label class="el">Colors: </label><span id="imageColors" class="colors el">
+                    @foreach (var color in image.DominantColors)
+                    {
+                        <span style="background-color:@color"></span>
+                    }
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="image image-container">
+        <div class="center">
+            <img id="image" alt="@title" src="@url">
+        </div>
+    </div>
+    <div class="image tags-container">
+        <div class="center">
+            @foreach (var tag in image.TopTags)
+            {
+                var href = "/gallery/" + tag;
+                <div class="item"><a href="@href">@tag</a></div>
+            }
+        </div>
+    </div>
+    <div class="image description-container">
+        <div class="center">
+            @foreach (var item in image.DescriptionCaptions)
+            {
+                <span>@item</span><br>
+            }
+        </div>
+    </div>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- image-botom -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9545854705640458"
+         data-ad-slot="3538266781"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-control" content="public">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="blue">
+    <title>Page not found</title>
+    @Html.Partial("../_Partial/GoogleStat.cshtml")
+</head>
+<body>
+
+    <div class="container gallery search-container">
+        <div class="left">
+            <a class="logo" href="../"><img alt="imsy.org" src="../images/logo.jpg"></a>
+            @Html.Partial("../_Partial/Search.cshtml", "")
+        </div>
+    </div>
+    <div class="container gallery menu-container">
+        <div class="left">
+            @Html.Partial("../_Partial/SearchMenu.cshtml")
+        </div>
+    </div>
+    <div class="container error-container">
+    <div class="center">
+        <pre>Page not found</pre>
+        </div>
+    </div>
+    
+    <script src="/js/lib.js"></script>
+</body>
+</html>

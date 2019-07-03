@@ -1,0 +1,2 @@
+ping google 
+  http://www.google.com/ping?sitemap=https://example.com/sitemap.xml

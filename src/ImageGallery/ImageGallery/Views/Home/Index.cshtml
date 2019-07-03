@@ -1,0 +1,40 @@
+﻿@{ 
+    string url = Model;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <title>Image search</title>
+    <meta name="description" content="Image search engine. Find quality images." />
+    <meta name="theme-color" content="blue">
+    <meta property="og:title" content="Image search" />
+    <meta property="og:description" content="Image search engine. Find quality images." />
+    <meta property="og:image" content="@url" />
+    @Html.Partial("../_Partial/GoogleStat.cshtml")
+</head>
+<body>
+    <div class="container main logo-container">
+        <img id="logo" class="center logo" src="@url" alt="imsy.org" />
+    </div>
+    <div class="container main search-container">
+        <div class="center">
+            @Html.Partial("../_Partial/Search.cshtml", string.Empty)
+        </div>
+    </div>
+    <div class="container main menu-container">
+        <div class="center">
+            @Html.Partial("../_Partial/SearchMenu.cshtml")
+        </div>
+    </div>
+    <div class="container main footer-menu-container">
+        <div class="left footer-menu">
+            <a href="/policy/">Policy</a>
+            <a href="/contact/">Contact us</a>
+        </div>
+    </div>
+    <script src="/js/lib.js"></script>
+    <script src="/js/logo.js"></script>
+</body>
+</html>

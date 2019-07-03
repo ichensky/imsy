@@ -1,0 +1,34 @@
+﻿@{ 
+
+    string query = Model;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <meta name="theme-color" content="blue">
+    <title>Gallery</title>
+    @Html.Partial("../_Partial/GoogleStat.cshtml")
+</head>
+<body>
+    
+    <div class="container gallery search-container">
+        <div class="left">
+            <a class="logo" href="../"><img alt="imsy.org" src="../images/logo.jpg"></a>
+            @Html.Partial("../_Partial/Search.cshtml", query)
+        </div>
+    </div>
+    <div class="container gallery menu-container">
+        <div class="left">
+            @Html.Partial("../_Partial/SearchMenu.cshtml")
+        </div>
+    </div>
+    <div class="container gallery-container">
+        <div id="gallery" class="center">
+        </div>
+    </div>
+    <script src="/js/lib.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

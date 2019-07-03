@@ -1,0 +1,17 @@
+﻿@using  ImageGallery.Models.Gallery;
+@{
+    (Category category, bool root) = ((Category, bool))Model;
+    var cl = root?"item":string.Empty;
+}
+    <li class="@cl">
+        <a href="/gallery/@category.Id">@category.Name</a>
+        @if (category.Categories != null)
+        {
+            <ul>
+                @foreach (var item in category.Categories)
+                {
+                    @Html.Partial("_Categories.cshtml", (item,false))
+                }
+            </ul>
+        }
+    </li>
